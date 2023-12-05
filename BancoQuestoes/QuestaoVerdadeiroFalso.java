@@ -40,13 +40,34 @@ public class QuestaoVerdadeiroFalso extends QuestaoObjetiva {
 		
 		if(this.itemCorretoA == this.itemSelecionadoA) {
 			avaliacao += this.getNotaPadrao() / 3;
-		}else if(this.itemCorretoB == this.itemSelecionadoB) {
-			avaliacao += this.getNotaPadrao() / 3;
-		}else if(this.itemCorretoC == this.itemSelecionadoC) {
+		}
+		if(this.itemCorretoB == this.itemSelecionadoB) {
 			avaliacao += this.getNotaPadrao() / 3;
 		}
-		
-		return this.notaObtida = avaliacao;
+		if(this.itemCorretoC == this.itemSelecionadoC) {
+			avaliacao += this.getNotaPadrao() / 3;
+		}
+		return this.notaObtida = Math.round(avaliacao * 100.0) / 100.0 ;
 	}
 	
+	public String mostrarQuestaoSemResposta() {
+		return ("*** Questão Verdadeiro ou Falso ***"
+				+ "\nNúmero     : " + this.getIdQuestao()
+				+ "\nEnunciado  : " + this.getEnunciado()
+				+ "\n\nA - " + this.getItemA()
+				+ "\nB - " + this.getItemB()
+				+ "\nC - " + this.getItemC()
+				+ "\n\nNota da questão: " + this.getNotaPadrao());
+	}
+	
+	@Override
+	public String toString() {
+		return ("*** Questão Verdadeiro ou Falso ***"
+				+ "\nNúmero     : " + this.getIdQuestao()
+				+ "\nEnunciado  : " + this.getEnunciado()
+				+ "\n\nA - " + this.getItemA() + " " + this.itemCorretoA
+				+ "\nB - " + this.getItemB() + " " + this.itemCorretoB
+				+ "\nC - " + this.getItemC() + " " + this.itemCorretoC
+				+ "\n\nNota da questão: " + this.getNotaPadrao());
+	}
 }
